@@ -6,6 +6,4 @@ try {
 } catch (PDOException $e) {
     die("Cannot connect to the database");
 }
-
-
-
+return $pdo;

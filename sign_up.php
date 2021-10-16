@@ -14,10 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Username cannot be empty!<br>";
     } elseif (empty($password || $confirmPassword)) {
         echo "Password field cannot be empty<br>";
-    } elseif (!empty($username && $password || empty($confirmPassword))) {
+    } elseif (empty($username && $password || empty($confirmPassword))) {
         echo "Confirm password cannot be empty!";
     }
-
+    $statement = $pdo->prepare("INSERT INTO users (Pass, User)
+                VALUES(:Pass, :User)");
+    $statement->bindValue(':Pass', $password);
+    $statement->bindValue(":User", $username);
+    $statement->execute();
 }
 ?>
 
