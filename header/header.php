@@ -12,8 +12,9 @@
       <nav class="header-links">
           <ul>
               <a href="index.php">Home</a>
-              <a href="../sign_up.php">Signup</a>
               <a href="../projects.php">My Projects</a>
+              <a href="../sign_up.php">Signup</a>
+              <a href="../log_in.php">Login</a>
           </ul>
       </nav>
       <br><br><br>

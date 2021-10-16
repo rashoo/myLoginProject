@@ -3,16 +3,12 @@
 ?>
 
 <title>Home</title>
-  </head>
-  <body>
+</head>
+<body>
 
-    <div class="user-input">
-    <form method="post">
-      <input type="text" name="username" size="30" placeholder="Username" /><br><br>
-      <input type="password" name="password" size="30" placeholder="Password" /><br><br>
-      <button class="login-button" type="button">Login</button>
-    </form>
-    </div>
+<p>
+    This is the index page.
+</p>
 
-  </body>
+</body>
 </html>

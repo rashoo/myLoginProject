@@ -1,22 +1,19 @@
 <?php
-    include_once "header/header.php";
-    require_once "database.php";
+include_once "header/header.php";
+require_once "database.php";
 
-    $username = '';
-    $password = '';
-    $confirmPassword = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$username = '';
+$password = '';
+$confirmPassword = '';
+
+if (empty($username) || empty($password) || empty($confirmPassword)) {
+    echo "Username cannot be empty!<br>";
+} else {
+    ($_SERVER['REQUEST_METHOD'] === 'POST');
     $username = $_POST['username'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['repeat-password'];
 
-    if (empty($username)) {
-        echo "Username cannot be empty!<br>";
-    } elseif (empty($password || $confirmPassword)) {
-        echo "Password field cannot be empty<br>";
-    } elseif (empty($username && $password || empty($confirmPassword))) {
-        echo "Confirm password cannot be empty!";
-    }
     $statement = $pdo->prepare("INSERT INTO users (Pass, User)
                 VALUES(:Pass, :User)");
     $statement->bindValue(':Pass', $password);
