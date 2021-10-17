@@ -1,25 +1,23 @@
 <?php
-include_once "header/header.php";
-require_once "database.php";
+    include_once "header/header.php";
+    require_once "database.php";
 
-$username = '';
-$password = '';
-$confirmPassword = '';
-
-if (empty($username) || empty($password) || empty($confirmPassword)) {
-    echo "Username cannot be empty!<br>";
-} else {
-    ($_SERVER['REQUEST_METHOD'] === 'POST');
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['repeat-password'];
-
-    $statement = $pdo->prepare("INSERT INTO users (Pass, User)
-                VALUES(:Pass, :User)");
-    $statement->bindValue(':Pass', $password);
-    $statement->bindValue(":User", $username);
-    $statement->execute();
-}
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $confirmPassword = $_POST['repeat-password'];
+    }
+    if (empty($username) && empty($password) || empty($confirmPassword)) {
+        echo "Fill out all the fields.";
+    } elseif ($password !== $confirmPassword) {
+        echo "Your passwords do not match";
+    } else {
+        $statement = $pdo->prepare("INSERT INTO users (Pass, User)
+                    VALUES(:Pass, :User)");
+        $statement->bindValue(':Pass', $password);
+        $statement->bindValue(":User", $username);
+        $statement->execute();
+    }
 ?>
 
 <title>Signup</title>
